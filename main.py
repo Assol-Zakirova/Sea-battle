@@ -121,9 +121,14 @@ import os
 ships = field_generation()
 
 all_ship_coordinates = []
-for ship in ships:
-    for coordinate in ship:
-        all_ship_coordinates.append(coordinate)
+
+def generate_all_ship_coordinates():
+    global all_ship_coordinates
+    global ships
+    for ship in ships:
+        for coordinate in ship:
+            all_ship_coordinates.append(coordinate)
+generate_all_ship_coordinates()
 print(ships)
 
 player_coordinates = []
@@ -215,9 +220,15 @@ while choice == 'Yes':
     player_coordinates = []
     field = [['*' for i in range(7)] for j in range(7)]
     ships = field_generation()
+    generate_all_ship_coordinates()
+    print(ships)
     shots = 0
     sunk_counter = 0
     sea_battle()
+    clear()
+    print_field()
+    shots = len(player_coordinates)
+    print('The number of shots are', shots)
     choice = input('Do you wanna restart the game? (Yes/No): ')
 else:
     write_data(name, shots)
