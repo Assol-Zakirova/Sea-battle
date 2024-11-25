@@ -65,3 +65,20 @@ def sea_battle():
                 sunk_counter+=1
         else:
             field[row][column] = 'M'
+
+sea_battle()
+clear()
+print_field()
+shots = len(player_coordinates)
+print('The number of shots are', shots)
+
+choice = input('Do you wanna restart the game? (Yes/No): ')
+while choice == 'Yes':
+    player_coordinates = []
+    field = [['*' for i in range(7)] for j in range(7)]
+    shots = 0
+    sunk_counter = 0
+    sea_battle()
+    choice = input('Do you wanna restart the game? (Yes/No): ')
+else:
+    pass
