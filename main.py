@@ -66,6 +66,26 @@ def sea_battle():
         else:
             field[row][column] = 'M'
 
+def write_data(name,shots):
+    with open("leaderboard.txt", 'a') as file:
+        file.write(str(name) + ';' + str(shots) + '\n')
+        file.close()
+
+def print_leaderboard():
+    with open("leaderboard.txt") as file:
+        player_list = []
+
+        for line in file:
+            data = line.rstrip()
+            name, shots = data.split(';')
+            player_list.append((int(shots), name))
+
+        player_list = sorted(player_list)
+        print('BEST PLAYERS:')
+        for player in player_list:
+            print(player[1], '-', player[0])
+        file.close()
+
 sea_battle()
 clear()
 print_field()
@@ -81,4 +101,5 @@ while choice == 'Yes':
     sea_battle()
     choice = input('Do you wanna restart the game? (Yes/No): ')
 else:
-    pass
+    write_data(name, shots)
+    print_leaderboard()
