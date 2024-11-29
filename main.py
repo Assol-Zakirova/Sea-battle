@@ -129,12 +129,13 @@ def generate_all_ship_coordinates():
         for coordinate in ship:
             all_ship_coordinates.append(coordinate)
 generate_all_ship_coordinates()
-print(ships)
+
 
 player_coordinates = []
 sunk_counter = 0
 
 name = input('Enter your name: ')
+numbers = [[0 ,1, 2, 3, 4 ,5, 6] ]
 field = [['*' for i in range(7)] for j in range(7)]
 
 def clear():
@@ -142,10 +143,12 @@ def clear():
 clear()
 
 def print_field():
+    print()
+    print('- 0 1 2 3 4 5 6')
+    numbers = [0, 1, 2, 3, 4, 5, 6]
     global field
-    for i in field:
-        print(' '.join(i))
-
+    for i in range(7):
+        print(numbers[i],' '.join(field[i]))
 def ship_is_sunk(row, column):
     global ships
     global player_coordinates
@@ -178,7 +181,7 @@ def sea_battle():
     while sunk_counter != 7:
         clear()
         print_field()
-        x, y = input().split(',')
+        x, y = input('Write coordinates from 0 to 6 (e.g. 0,4): ').split(',')
         row, column = int(x),int(y)
         player_coordinates.append((row,column))
         if (row, column) in all_ship_coordinates:
