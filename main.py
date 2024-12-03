@@ -224,7 +224,6 @@ while choice == 'Yes':
     field = [['*' for i in range(7)] for j in range(7)]
     ships = field_generation()
     generate_all_ship_coordinates()
-    print(ships)
     shots = 0
     sunk_counter = 0
     sea_battle()
